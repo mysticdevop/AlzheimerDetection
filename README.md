@@ -1,167 +1,28 @@
-🧠 NeuroScan AI — Alzheimer’s Detection using MRI
-
-📌 Overview
-
-NeuroScan AI is an end-to-end deep learning system designed to detect Alzheimer’s disease from MRI scans. The project performs both binary classification (CN vs AD) and multi-class classification (CN, MCI, AD) using a ResNet-based architecture.
-
----
-
-🎯 Problem Statement
-
-To develop a reliable AI-based solution that can analyze MRI scans and classify patients into:
-
-- Cognitively Normal (CN)
-- Mild Cognitive Impairment (MCI)
-- Alzheimer’s Disease (AD)
-
----
-
-🚀 Features
-
-- 📥 Upload MRI images
-- 🧠 Binary & Multi-class classification
-- ⚡ Real-time prediction using Streamlit
-- 📊 Confidence score visualization
-- 🧹 Data preprocessing & cleaning pipeline
-- 📈 Model evaluation with metrics and graphs
-
----
-
-🏗️ Tech Stack
-
-🔹 Backend (ML/DL)
-
-- PyTorch
-- MONAI (Medical Imaging Framework)
-- NumPy, Pandas
-
-🔹 Frontend
-
-- Streamlit
-- Custom CSS
-
-🔹 Utilities
-
-- OpenCV
-- pydicom
-- scikit-learn
-- matplotlib
-- tqdm
-
----
-
-🧠 Model Architecture
-
-- ResNet18 (CNN-based architecture)
-- Residual connections for deep feature learning
-- Separate models for:
-  - Binary Classification (CN vs AD)
-  - Multi-class Classification (CN, MCI, AD)
-
----
-
-📂 Dataset
-
-- MRI scans in DICOM format
-- Converted to 2D grayscale images
-- Labeled using metadata (CSV file)
-
----
-
-⚙️ Data Preprocessing
-
-- DICOM to image conversion
-- Slice extraction
-- Intensity normalization
-- Image resizing (224×224)
-- Removal of corrupted/blank images
-- Patient-level data splitting (to avoid data leakage)
-
----
-
-📊 Evaluation Metrics
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
----
-
-🧪 Results
-
-- Binary Classification Accuracy: ~90%+
-- Multi-class Classification Accuracy: ~60–70% (patient-level validation)
-
----
-
-🌐 Deployment
-
-- Built using Streamlit
-- Supports real-time inference
-- User-friendly interface
-
----
-
-▶️ How to Run
-
-1. Clone Repository
-
-git clone https://github.com/your-username/neuroscan-ai.git
-cd neuroscan-ai
-
-2. Create Virtual Environment
-
-python -m venv venv
-venv\Scripts\activate
-
-3. Install Requirements
-
-pip install -r requirements.txt
-
-4. Run App
-
-streamlit run app.py
-
----
-
-📁 Project Structure
-
-├── app.py
-├── evaluate.py
-├── models/
-│   ├── binary_resnet_monai.pth
-│   └── multiclass_resnet_monai.pth
-├── dataset/
-├── requirements.txt
-└── README.md
-
----
-
-💡 Novelty
-
-- End-to-end pipeline from raw MRI data to deployment
-- Patient-level data splitting to prevent leakage
-- Dual-model approach for screening and staging
-- Integration of medical imaging framework (MONAI)
-
----
-
-⚠️ Disclaimer
-
-This project is for research and educational purposes only and should not be used for clinical diagnosis.
-
----
-
-👨‍💻 Author
-
-CodeCrawlers
-
----
-
-⭐ Acknowledgements
-
-- MONAI Framework
-- PyTorch
-- Open-source medical imaging datasets
+NeuroScan AI: Alzheimer’s MRI Detection
+End-to-end PyTorch and MONAI deep learning pipeline for detecting Alzheimer’s Disease from MRI scans using a ResNet18 architecture.
+-------------------------------------------------------------------------------------------------------------
+🔑 Key Features
+ . End-to-End Medical Imaging Pipeline: Smooth extraction, windowing, and transformation of raw DICOM objects into optimised model tensors.
+ . Leakage-Proof Data Modularity: Implements strict patient-level partitioning during data splits, ensuring that distinct structural slices from the same     subject never span both the training and validation subsets.
+ . Dual-Engine Classification: * Binary Screening Model: Optimised for high-sensitivity detection between healthy (CN) and advanced pathological (AD)         states.
+      - Multi-Class Staging Model: Tailored to identify the subtle structural variances representing the intermediate MCI phase.
+ . Interactive Streamlit Dashboard: A clean front-end application allowing medical practitioners to drop in clinical imaging scans and instantly receive      probability distribution maps and classification confidence scores.
+ . Deep Metric Validation: Comprehensive evaluation modules tracking macro/micro Precision, Recall, F1-scores, and localised Confusion Matrices.
+--------------------------------------------------------------------------------------------------------------
+⚙️ Tech Stack
+ . Model: PyTorch, MONAI (ResNet18)
+ . Interface: Streamlit
+ . Data/Utils: OpenCV, pydicom, scikit-learn, Pandas, NumPy
+---------------------------------------------------------------------------------------------------------------
+✅ Performance Validation
+ . Binary (CN vs AD): ~90%+ Accuracy
+ . Multi-class (CN, MCI, AD): ~60–70% Accuracy
+ --------------------------------------------------------------------------------------------------------------
+ 💡 Engineering Novelty
+ . Leakage Mitigation: Unlike naive slice-based splitting frameworks that distribute slices from the same subject across both training and testing            datasets, this pipeline implements strict subject-level isolation. This approach provides an honest and reliable look at model performance on              completely unseen anatomy.
+ . MONAI-Powered Native Conversions: By taking advantage of specialised medical imaging transforms, the data loader maintains precise tracking of spatial     orientations and voxel coordinates.
+ . Dual-Engine Screening Ecosystem: Provides a reliable safety net by pairing a highly sensitive binary screening model with a more granular multi-class      diagnostic framework.
+ ---------------------------------------------------------------------------------------------------------------
+ ⚠️ Disclaimer
+  This system is developed strictly for educational, research, and technical prototyping purposes. The classification outputs generated by NeuroScan AI do   not constitute formal clinical diagnoses and should never replace the expert diagnostic evaluations provided by certified radiologists, neurologists, or   healthcare professionals. Do not use for clinical diagnosis.
+  Author: CodeCrawlers (Lakshya Gupta & Team)
